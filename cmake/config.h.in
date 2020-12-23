@@ -1,0 +1,37 @@
+#cmakedefine HAVE_MALLOC_H 1
+#cmakedefine WORDS_BIGENDIAN 1
+#cmakedefine HAVE_DECL___BUILTIN_CLZLL 1
+#cmakedefine HAVE_BSR64 1
+#cmakedefine HAVE_SNPRINTF 1
+#cmakedefine HAVE__SNPRINTF 1
+#cmakedefine HAVE__SNPRINTF_S 1
+
+/* Name of package */
+#cmakedefine LIBAEC_PACKAGE "@LIBAEC_PACKAGE@"
+
+/* Define to the address where bug reports for this package should be sent. */
+#cmakedefine LIBAEC_PACKAGE_BUGREPORT "@LIBAEC_PACKAGE_BUGREPORT@"
+
+/* Define to the full name of this package. */
+#cmakedefine LIBAEC_PACKAGE_NAME "@LIBAEC_PACKAGE_NAME@"
+
+/* Define to the full name and version of this package. */
+#cmakedefine LIBAEC_PACKAGE_STRING "@LIBAEC_PACKAGE_STRING@"
+
+/* Define to the one symbol short name of this package. */
+#cmakedefine LIBAEC_PACKAGE_TARNAME "@LIBAEC_PACKAGE_TARNAME@"
+
+/* Define to the version of this package. */
+#cmakedefine LIBAEC_PACKAGE_VERSION "@LIBAEC_PACKAGE_VERSION@"
+
+/* Define to 1 if you have the ANSI C header files. */
+#cmakedefine STDC_HEADERS @STDC_HEADERS@
+
+/* Version number of package */
+#define VERSION "@LIBAEC_PACKAGE_VERSION@"
+
+/* Define to empty if `const' does not conform to ANSI C. */
+#cmakedefine const
+
+/* Define to `unsigned int' if <sys/types.h> does not define. */
+#cmakedefine size_t

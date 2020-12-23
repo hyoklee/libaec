@@ -1,0 +1,99 @@
+Getting libaec
+==============
+
+The source code of libaec is hosted at DKRZ GitLab.
+
+## Source code and binary releases
+
+The latest releases of libaec can be downloaded at the following
+location:
+
+  https://gitlab.dkrz.de/k202009/libaec/tags
+
+## Developer snapshot
+
+  git clone https://gitlab.dkrz.de/k202009/libaec.git
+
+This version of libaec has been changed by The HDF Group to work within the framework of hdf5.
+
+1. Obtaining the HDF version of libaec
+
+   The latest supported public release of HDF libaec is available from The
+   HDF Group's (THG) FTP server:
+       ftp://ftp.hdfgroup.org/lib-external/libaec/1.0.4
+
+Installation
+============
+
+## General considerations
+
+Libaec achieves the best performance on 64 bit systems. The library
+will work correctly on 32 bit systems but encoding and decoding
+performance will be much lower.
+
+## Installation from source code release with configure
+
+The most common installation procedure on Unix-like systems looks as
+follows:
+
+Unpack the tar archive and change into the unpacked directory.
+
+  mkdir build
+  cd build
+  ../configure
+  make check install
+
+## Installation from source code release with CMake
+
+As an alternative, you can use CMake to install libaec.
+
+   1.   We suggest you obtain the latest CMake for windows from the Kitware
+        web site. This product requires a minimum CMake version 3.2.2.
+
+   2.   We use the file cacheinit.cmake in the
+        config/cmake source folder for our testing. This file enables all of the
+        basic options and we turn specific options on or off for testing
+        using the following command line within the build directory:
+
+        cmake -C <sourcepath>/config/cmake/cacheinit.cmake -G "<generator>"  [-D<options>]  <sourcepath>
+
+        Where <generator> is
+            * MinGW Makefiles
+            * NMake Makefiles
+            * Unix Makefiles
+            * Visual Studio 12 2013
+            * Visual Studio 12 2013 Win64
+            * Visual Studio 11 2012
+            * Visual Studio 11 2012 Win64
+            * Visual Studio 14 2015
+            * Visual Studio 14 2015 Win64
+
+        <cacheinit.cmake> is:
+                # This is the CMakeCache file used by HDF Group for daily tests.
+                ########################
+                # EXTERNAL cache entries
+                ########################
+                set (BUILD_SHARED_LIBS ON CACHE BOOL "Build Shared Libraries" FORCE)
+                set (CMAKE_INSTALL_FRAMEWORK_PREFIX "Library/Frameworks" CACHE STRING "Frameworks installation directory" FORCE)
+                set (LIBAEC_PACKAGE_EXT "" CACHE STRING "Name of package extension" FORCE)
+                set (BUILD_TESTING ON CACHE BOOL "Build LIBAEC Unit Testing" FORCE)
+
+
+Intel compiler settings
+=======================
+
+The Intel compiler can improve performance by vectorizing certain
+parts of the code on x86 architectures. Assuming your CPU supports
+AVX2, the following options will increase encoding speed.
+
+  ../configure CC=icc
+  make CFLAGS="-O3 -xCORE-AVX2" bench
+
+On a 3.4 GHz E3-1240 v3 we see more than 400 MiB/s for encoding
+typical data.
+
+Using other SIMD instruction sets on older CPUs may also help.
+
+User Support
+=======================
+   Report problems to help@hdfgroup.org.
